@@ -8,7 +8,7 @@ import BigNumber from 'bignumber.js';
 import { MULTIPLICATOR__DECIMALS, PRICE__DECIMALS } from '@/config';
 import classNames from 'classnames';
 
-function OptionsInner(): JSX.Element {
+function OptionsInner({ stateTransactionTransactions }: { stateTransactionTransactions: string }): JSX.Element {
     const wallet = useTvmWallet()
     const Upex = useStore(UpexStore)
 
@@ -53,8 +53,6 @@ function OptionsInner(): JSX.Element {
         return new BigNumber(item._closePrice!).gt(new BigNumber(item._openPrice!))
     }
 
-    const [stateTransactionTransactions, setStateTransactionTransactions] = React.useState('BTC')
-
     const [dataTransaction, setDataTransaction] = React.useState(null)
 
     const [valueWithdraw, setValueWithdraw] = React.useState('')
@@ -68,36 +66,13 @@ function OptionsInner(): JSX.Element {
         setDataTransaction(null)
     }
 
+    React.useEffect(() => {
+        setDataTransaction(null)
+    }, [stateTransactionTransactions])
+
 
     return (
         <>
-            <Tabs
-                defaultActiveKey="1"
-                id="tabs-withdraw"
-                onChange={e => {
-                    setStateTransactionTransactions(e)
-                    setDataTransaction(null)
-                }}
-                items={[
-                    {
-                        label: "BTC",
-                        key: 'BTC',
-                    },
-                    {
-                        label: "ETH",
-                        key: 'ETH',
-                    },
-                    {
-                        label: "TSLA",
-                        key: 'TSLA',
-                    },
-                    {
-                        label: "AAPL",
-                        key: 'AAPL',
-                    },
-
-                ]}
-            />
             {wallet.isConnected && Upex.markets?.map((e, i) => (
                 <>
                     {stateTransactionTransactions === symbols[i] &&
