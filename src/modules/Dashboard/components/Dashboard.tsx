@@ -32,7 +32,11 @@ function DashboardInner(): JSX.Element {
                     </Width>
                     <Width size='2-5'>
                         <Tile type='primary' className="uk-height-large uk-padding-small">
-                            <TechnicalAnalysis colorTheme="dark" autosize isTransparent={true} symbol={stateTransactionTransactions}></TechnicalAnalysis>
+                            <TechnicalAnalysis colorTheme="dark" autosize isTransparent={true} symbol={
+                                stateTransactionTransactions === "BTC" ? "BINANCE:BTCUSD" :
+                                    stateTransactionTransactions === "ETH" ? "BINANCE:ETHUSD" :
+                                        stateTransactionTransactions
+                            }></TechnicalAnalysis>
                         </Tile>
                     </Width>
                 </Grid>
