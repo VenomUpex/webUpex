@@ -1,0 +1,62 @@
+@mixin hook-tile-primary() {
+    background: #12131a;
+    border-radius: 12px;
+}
+
+@mixin hook-tile-secondary() {
+    background: #181c27;
+    border-radius: 12px;
+}
+
+@mixin hook-button-tertiary() {
+    background-color: #049981 !important;
+    color: #fff !important;
+    font-weight: 600;
+    padding: 0;
+    border-radius: 12px;
+}
+
+@mixin hook-button-danger() {
+    padding: 0;
+    font-weight: 600;
+    padding: 0;
+    border-radius: 12px;
+}
+
+@mixin hook-tabs() {
+    background: #12131a;
+    border-radius: 12px;
+    border: 1px solid #fff;
+
+    &::before {
+        display: none;
+    }
+
+    .uk-tabs-tab-active:not(.uk-tabs-tab-disabled) {
+        color: #ffffff;
+        background: #181c27;
+        border-radius: 12px;
+    }
+
+    .uk-tabs-ink-bar {
+        background: #fff0
+    }
+
+    .uk-tabs-tab {
+        color: #fff;
+    }
+}
+
+@mixin hook-control() {
+    border-radius: 12px;
+    input {
+        background: #20232d!important;
+        
+    }
+}
+
+@mixin hook-control-hover() {}
+
+@mixin hook-control-focus() {}
+
+@mixin hook-control-disabled() {}

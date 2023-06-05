@@ -1,0 +1,12 @@
+@import '@broxus/react-uikit/dist/esm/styles/variables';
+
+.header {
+    background-color: #12131a;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 99;
+    .logo {
+        padding: 0 15px;
+    }
+}

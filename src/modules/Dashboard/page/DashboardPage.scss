@@ -1,0 +1,53 @@
+.dashboard {
+    // display: grid;
+    // gap: 24px;
+    max-width: 1280px;
+    margin: auto;
+
+    #tradingview_widget_wrapper {
+        height: 100%;
+
+        >div {
+            height: 100%;
+        }
+    }
+
+    &--item {
+        &__finish {
+            opacity: 0.45;
+
+            &--up {
+                >div {
+                    border: 1px solid rgb(80 167 108/1);
+                    background: linear-gradient(rgba(105, 204, 141, 0.3) 0%, rgba(51, 52, 55, 0.133) 23.95%, rgba(34, 45, 64, 0.09) 100%);
+                }
+            }
+
+            &--down {
+                >div {
+                    border: 1px solid rgb(239 68 68/1);
+                    background: linear-gradient(360deg, rgba(224, 71, 106, 0.3) 18.35%, rgba(35, 38, 47, 0.09) 40.56%, rgba(35, 38, 47, 0.196) 100%);
+                }
+            }
+        }
+    }
+
+    #tabs-withdraw {
+        width: 360px;
+    }
+
+    .input--go {
+        position: relative;
+        border-radius: 12px;
+
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 0 0 0 0px;
+            padding: 0 15px;
+            background: #2d9a81;
+            border-radius: 12px;
+        }
+    }
+}
