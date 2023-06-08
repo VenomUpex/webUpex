@@ -106,7 +106,7 @@ export default (_: any, options: any): WebpackConfig => {
 
     config.plugins.push(
         new HtmlWebpackPlugin({
-            title: 'upex',
+            title: 'Upex',
             filename: path.resolve(__dirname, 'dist/index.html'),
             template: 'public/index.html',
             inject: false,

@@ -223,6 +223,7 @@ export function useTvmWallet(): TvmWalletService {
             defaultNetworkId: 1000,
             minWalletVersion: '0.2.34',
             networks: onlyTvmNetworks(networks),
+            providerId: 'venom'
         })
         service.setProvider(
             useRpcProvider('venom'),

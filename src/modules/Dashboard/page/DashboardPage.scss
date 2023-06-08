@@ -50,4 +50,15 @@
             border-radius: 12px;
         }
     }
+
+    .simbol {
+        color: rgb(255 255 255 / 18%);
+        font-weight: 900;
+        font-size: 68px;
+        position: absolute;
+        top: -90px;
+        right: 10px;
+        width: fit-content;
+        z-index: 0;
+    }
 }

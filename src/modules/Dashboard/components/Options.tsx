@@ -7,6 +7,7 @@ import { useTvmWallet } from '@/utils';
 import BigNumber from 'bignumber.js';
 import { MULTIPLICATOR__DECIMALS, PRICE__DECIMALS } from '@/config';
 import classNames from 'classnames';
+import { Placeholder } from '@/components/common/Placeholder';
 
 function OptionsInner({ stateTransactionTransactions }: { stateTransactionTransactions: string }): JSX.Element {
     const wallet = useTvmWallet()
@@ -76,8 +77,10 @@ function OptionsInner({ stateTransactionTransactions }: { stateTransactionTransa
             {wallet.isConnected && Upex.markets?.map((e, i) => (
                 <>
                     {stateTransactionTransactions === symbols[i] &&
-                        <Grid gap="xsmall" childWidth={5}>
-                            <Text component={'h3'}>
+                        <Grid gap="xsmall" childWidth={5} style={{
+                            position: "relative",
+                        }}>
+                            <Text component={'h3'} className='simbol'>
                                 {symbols[i]}
                             </Text>
                             <Flex>
@@ -191,7 +194,23 @@ function OptionsInner({ stateTransactionTransactions }: { stateTransactionTransa
                                     </Width>
                                 ))
                                     :
-                                    <Text component='h4'>Loading...</Text>
+                                    <>
+                                        <Width size='1-5' className="uk-margin-small-right">
+                                            <Placeholder height={305} width={245} />
+                                        </Width>
+                                        <Width size='1-5' className="uk-margin-small-right">
+                                            <Placeholder height={305} width={245} />
+                                        </Width>
+                                        <Width size='1-5' className="uk-margin-small-right">
+                                            <Placeholder height={305} width={245} />
+                                        </Width>
+                                        <Width size='1-5' className="uk-margin-small-right">
+                                            <Placeholder height={305} width={245} />
+                                        </Width>
+                                        <Width size='1-5' className="uk-margin-small-right">
+                                            <Placeholder height={305} width={245} />
+                                        </Width>
+                                    </>
                                 }
                             </Flex>
                         </Grid>
