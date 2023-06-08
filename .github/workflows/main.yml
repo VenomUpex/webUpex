@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: "self-hosted"
+    steps:
+    - uses: actions/checkout@v2
+    - name: Building image
+      run: docker build . -t upex-web:latest --target prod
+    - name: Stop container
+      run: docker stop upex-web && docker rm upex-web || true
+    - name: Start container
+      run: docker run -p 127.0.0.1:30300:80 --name upex-web -d upex-web:latest
