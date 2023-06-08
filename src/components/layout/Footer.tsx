@@ -19,8 +19,8 @@ export function Footer(): JSX.Element {
             "title": "TSLA"
         },
         {
-            "proName": "NASDAQ-GS",
-            "title": "NASDAQ-GS"
+            "proName": "AAPL",
+            "title": "AAPL"
         }
     ]
 

@@ -41,7 +41,7 @@ function DashboardInner(): JSX.Element {
                     </Width>
                 </Grid>
                 <Tabs
-                    defaultActiveKey="1"
+                    defaultActiveKey="1" 
                     id="tabs-withdraw"
                     onChange={e => {
                         setStateTransactionTransactions(e)
