@@ -121,7 +121,13 @@ export class UpexStore extends AbstractStore<
         call_id: string,
         send_gas_to: Address
     }) {
-        const toastId = toast.loading('Wait for the withdrawal...');
+        const toastId = toast.loading('Wait for the withdrawal...', {
+            style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+            },
+        });
         const provider = useRpcProvider('venom')
         const subscriber = new provider.Subscriber()
         const contract = UpexRootContract(ROOT)
@@ -141,6 +147,11 @@ export class UpexStore extends AbstractStore<
                     this.setData('marketsOptions', dataOption)
                     toast.success('The withdrawal was successful', {
                         id: toastId,
+                        style: {
+                            borderRadius: '10px',
+                            background: '#333',
+                            color: '#fff',
+                        },
                     });
                     return;
                 }
@@ -188,7 +199,13 @@ export class UpexStore extends AbstractStore<
     }
 
     public async encodeTokenTransfer(market_id: string, bet: string, call_id: string, valueWithdraw: string) {
-        const toastId = toast.loading('Wait for the adding a bet...');
+        const toastId = toast.loading('Wait for the adding a bet...', {
+            style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+            },
+        });
         const provider = useRpcProvider('venom')
         const subscriber = new provider.Subscriber()
         const contract = UpexRootContract(ROOT)
@@ -212,6 +229,11 @@ export class UpexStore extends AbstractStore<
                     this.setData('marketsOptions', dataOption)
                     toast.success('The bet was successful', {
                         id: toastId,
+                        style: {
+                            borderRadius: '10px',
+                            background: '#333',
+                            color: '#fff',
+                        },
                     });
                     return;
                 }

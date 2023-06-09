@@ -45,7 +45,7 @@ export function App(): JSX.Element {
                                         </UpexStoreProvider>
                                     </Route>
                                 </Switch>
-                                <Toaster />
+                                <Toaster position="bottom-right" />
                             </main>
                             <Footer key="footer" />
                         </div>
