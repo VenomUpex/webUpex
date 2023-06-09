@@ -2,12 +2,13 @@ import * as React from 'react'
 import { observer } from "mobx-react-lite";
 import { useStore } from '@/hooks/useStore';
 import { UpexStore, marketsOptions } from '@/stores/UpexStore';
-import { Button, Flex, Grid, Input, Tabs, Text, Tile, Width } from '@broxus/react-uikit';
+import { Button, Flex, Grid, Input, Tabs, Text, Tile, ValueType, Width } from '@broxus/react-uikit';
 import { useTvmWallet } from '@/utils';
 import BigNumber from 'bignumber.js';
 import { MULTIPLICATOR__DECIMALS, PRICE__DECIMALS } from '@/config';
 import classNames from 'classnames';
 import { Placeholder } from '@/components/common/Placeholder';
+import { InputNumber } from '@broxus/react-uikit/dist/esm/components/Control/Input/Number';
 
 function OptionsInner({ stateTransactionTransactions }: { stateTransactionTransactions: string }): JSX.Element {
     const wallet = useTvmWallet()
@@ -57,8 +58,8 @@ function OptionsInner({ stateTransactionTransactions }: { stateTransactionTransa
     const [dataTransaction, setDataTransaction] = React.useState(null)
 
     const [valueWithdraw, setValueWithdraw] = React.useState('')
-    const onChangeWithdraw: React.ChangeEventHandler<HTMLInputElement> = event => {
-        setValueWithdraw(event.target.value)
+    const onChangeWithdraw = (event: ValueType) => {
+        setValueWithdraw(event.toString())
     }
 
     const sendEncodeTokenTransfer = () => {
@@ -116,7 +117,7 @@ function OptionsInner({ stateTransactionTransactions }: { stateTransactionTransa
                                                             }
                                                         </Flex>
                                                         <Flex className="uk-margin-medium-bottom uk-text-center">
-                                                            <Text>In {item?._close && convertTimestamp(parseInt(item._close))} timer price will....?</Text>
+                                                            <Text>In {item?._close && convertTimestamp(parseInt(item._close))} price will....?</Text>
                                                         </Flex>
                                                         {item.win && item.commit &&
                                                             <Flex justifyContent='between' flexDirection='column'>
@@ -174,10 +175,11 @@ function OptionsInner({ stateTransactionTransactions }: { stateTransactionTransa
                                                             </>
                                                             :
                                                             <div className='input--go'>
-                                                                <Input
+                                                                <InputNumber
                                                                     value={valueWithdraw}
                                                                     placeholder="Enter your bet"
-                                                                    onChange={onChangeWithdraw}
+                                                                    onChange={(e) => { onChangeWithdraw(e!) }}
+                                                                    max={100}
                                                                 />
                                                                 <Button
                                                                     type='danger'
