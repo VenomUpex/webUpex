@@ -99,7 +99,7 @@ export default (_: any, options: any): WebpackConfig => {
     if (isDevelopment && showErrors) {
         config.plugins.push(new ForkTsCheckerWebpackPlugin({
             typescript: {
-                configFile: path.resolve('tsconfig.json')
+                configFile: path.resolve(__dirname, 'tsconfig.json') // Specify the correct path to your tsconfig.json file
             }
         }))
     }
