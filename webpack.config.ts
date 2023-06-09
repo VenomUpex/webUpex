@@ -58,7 +58,7 @@ export default (_: any, options: any): WebpackConfig => {
         removeEmptyChunks: false,
         runtimeChunk: true,
         splitChunks: false,
-    } : { 
+    } : {
         splitChunks: {
             chunks: (chunk) => !/^(polyfills|pages|modules)$/.test(chunk.name),
             cacheGroups: {
@@ -99,7 +99,7 @@ export default (_: any, options: any): WebpackConfig => {
     if (isDevelopment && showErrors) {
         config.plugins.push(new ForkTsCheckerWebpackPlugin({
             typescript: {
-                configFile: path.resolve(__dirname, 'tsconfig.json') // Specify the correct path to your tsconfig.json file
+                configFile: path.resolve('tsconfig.json')
             }
         }))
     }
