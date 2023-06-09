@@ -7,5 +7,5 @@ export const PRICE__DECIMALS = 8
 export const MULTIPLICATOR__DECIMALS = 3
 export const FEE = 2500000000 
 
-export const ROOT = new Address("0:d9d7c15158a4237350064535ab9430167bf9a01f0722f316fc9388da1147a5ea")
-export const USDT_TOKEN_ROOT = new Address("0:20470e6a6e33aa696263b5702608d69e3317c23bf20c2f921b38d6588c555603")
+export const ROOT = new Address("0:182a8e49ab54fdf73ea722c431d0ad599abf60daf8972a603fce295759e29616")
+export const USDT_TOKEN_ROOT = new Address("0:1935e67480e3cab02ee26cc48268f5329a15ea3b6f33705540b431facc5e27e8")

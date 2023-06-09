@@ -103,7 +103,6 @@ export class UpexStore extends AbstractStore<
                 );
             })
         );
-
         this.setData('marketsOptions', marketsOptions)
     }
 
