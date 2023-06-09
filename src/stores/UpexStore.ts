@@ -5,8 +5,9 @@ import { makeObservable } from "mobx";
 import { UpexUtils } from "./utils";
 import { Address, Transaction } from "everscale-inpage-provider";
 import BigNumber from "bignumber.js";
-import { MULTIPLICATOR__DECIMALS, PRICE__DECIMALS, ROOT, USDT_DECIMALS } from '@/config';
+import { ROOT, USDT_DECIMALS } from '@/config';
 import { UpexRootContract } from "./contracts";
+import { toast } from "react-hot-toast";
 
 type UpexStoreState = {
 }
@@ -102,7 +103,6 @@ export class UpexStore extends AbstractStore<
                 );
             })
         );
-
         this.setData('marketsOptions', marketsOptions)
     }
 
@@ -121,7 +121,7 @@ export class UpexStore extends AbstractStore<
         call_id: string,
         send_gas_to: Address
     }) {
-
+        const toastId = toast.loading('Wait for the withdrawal...');
         const provider = useRpcClient('venom')
         const subscriber = new provider.Subscriber()
         const contract = UpexRootContract(ROOT)
@@ -139,9 +139,11 @@ export class UpexStore extends AbstractStore<
                     let dataOption = this.marketsOptions
                     dataOption[parseInt(market_id)][i].win = false
                     this.setData('marketsOptions', dataOption)
+                    toast.success('The withdrawal was successful', {
+                        id: toastId,
+                    });
                     return;
                 }
-                alert("error")
                 return undefined
             })
             .delayed(s => s.first())
@@ -149,6 +151,7 @@ export class UpexStore extends AbstractStore<
         await UpexStore.Utils._claimReward(option_id, market_id, meta)
 
         await successStream()
+        await subscriber.unsubscribe()
     }
 
     // Account
@@ -185,6 +188,7 @@ export class UpexStore extends AbstractStore<
     }
 
     public async encodeTokenTransfer(market_id: string, bet: string, call_id: string, valueWithdraw: string) {
+        const toastId = toast.loading('Wait for the adding a bet...');
         const provider = useRpcClient('venom')
         const subscriber = new provider.Subscriber()
         const contract = UpexRootContract(ROOT)
@@ -205,9 +209,11 @@ export class UpexStore extends AbstractStore<
                         direction: bet,
                     }
                     this.setData('marketsOptions', dataOption)
+                    toast.success('The bet was successful', {
+                        id: toastId,
+                    });
                     return;
                 }
-                alert("error")
                 return undefined
             })
             .delayed(s => s.first())
@@ -225,6 +231,7 @@ export class UpexStore extends AbstractStore<
             })
 
         await successStream()
+        await subscriber.unsubscribe()
         return encodeToken
     }
 

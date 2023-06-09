@@ -28,7 +28,9 @@ export function HeaderInner(): JSX.Element {
                             <>
                                 <Navbar.Left className="uk-width-expand header--logo">
                                     <Link to={appRoutes.home.makeUrl()} className="logo">
-                                        Upex
+                                        {
+                                            <img width={120} src='https://thumb.tildacdn.com/tild3230-6534-4264-b233-353536613665/-/cover/252x64/center/center/-/format/webp/eec0e5ab-0e64-45ac-a.png' />
+                                        }
                                     </Link>
                                 </Navbar.Left>
 
