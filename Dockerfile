@@ -4,7 +4,7 @@ RUN apt install -y python3 build-essential git
 RUN mkdir "app"
 WORKDIR app
 COPY ./package.json .
-RUN npm i -force
+RUN npm i
 CMD ["npm", "dev"]
 
 FROM dev as build
