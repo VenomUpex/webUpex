@@ -107,7 +107,7 @@ export default (_: any, options: any): WebpackConfig => {
     config.plugins.push(
         new HtmlWebpackPlugin({
             title: 'Upex',
-            favicon: 'public/favicon.jpg',
+            favicon: 'public/favicon.ico',
             filename: path.resolve(__dirname, 'dist/index.html'),
             template: 'public/index.html',
             inject: false,
@@ -124,11 +124,11 @@ export default (_: any, options: any): WebpackConfig => {
                 patterns: [
                     {
                         context: 'public',
-                        from: 'favicon.jpg',
+                        from: 'favicon.ico',
                     },
                     {
                         context: 'public',
-                        from: 'favicon.jpg',
+                        from: 'favicon.ico',
                     },
                     {
                         context: 'public',
