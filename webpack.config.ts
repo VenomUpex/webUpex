@@ -58,7 +58,7 @@ export default (_: any, options: any): WebpackConfig => {
         removeEmptyChunks: false,
         runtimeChunk: true,
         splitChunks: false,
-    } : {
+    } : { 
         splitChunks: {
             chunks: (chunk) => !/^(polyfills|pages|modules)$/.test(chunk.name),
             cacheGroups: {
