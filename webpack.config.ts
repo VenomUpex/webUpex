@@ -133,7 +133,7 @@ export default (_: any, options: any): WebpackConfig => {
                     {
                         context: 'public',
                         from: 'meta-image.png',
-                        to: 'meta-image.jpg'
+                        to: 'assets/meta-image.png'
                     },
                 ],
             }),
