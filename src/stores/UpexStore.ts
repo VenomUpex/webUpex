@@ -122,7 +122,7 @@ export class UpexStore extends AbstractStore<
         send_gas_to: Address
     }) {
         const toastId = toast.loading('Wait for the withdrawal...');
-        const provider = useRpcClient('venom')
+        const provider = useRpcProvider('venom')
         const subscriber = new provider.Subscriber()
         const contract = UpexRootContract(ROOT)
         const successStream = await subscriber
@@ -189,7 +189,7 @@ export class UpexStore extends AbstractStore<
 
     public async encodeTokenTransfer(market_id: string, bet: string, call_id: string, valueWithdraw: string) {
         const toastId = toast.loading('Wait for the adding a bet...');
-        const provider = useRpcClient('venom')
+        const provider = useRpcProvider('venom')
         const subscriber = new provider.Subscriber()
         const contract = UpexRootContract(ROOT)
         const successStream = await subscriber
@@ -199,6 +199,7 @@ export class UpexStore extends AbstractStore<
                 transaction,
             }))
             .filterMap(async result => {
+                console.log(result)
                 if (
                     result.event === 'CommitSaved'
                     && result.data.call_id === call_id
