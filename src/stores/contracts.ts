@@ -7,11 +7,13 @@ import { TokenWalletUpgradeableAbi } from '@/abi/TokenWalletUpgradeable.abi'
 
 import { resolveTvmAddress, useRpcClient, useRpcProvider } from '@broxus/js-core'
 import { type Address, type Contract } from 'everscale-inpage-provider'
+import { TokenGiver } from '@/abi/TokenGiver.abi'
 
 
 type UpexRootAbi = typeof UpexRoot
 type UpexAccountAbi = typeof UpexAccount
 type UpexOptionAbi = typeof UpexOption
+type Giver = typeof TokenGiver
 
 type RootAbi = typeof TokenRootAbi
 type WalletUpgradeableAbi = typeof TokenWalletUpgradeableAbi
@@ -51,4 +53,13 @@ export function UsdtTokenWallet(
     provider = useRpcClient('venom'),
 ): Contract<WalletUpgradeableAbi> {
     return new provider.Contract(TokenWalletUpgradeableAbi, resolveTvmAddress(address))
+}
+
+
+
+export function GiverContract(
+    address: Address,
+    provider = useRpcClient('venom'),
+): Contract<Giver> {
+    return new provider.Contract(TokenGiver, resolveTvmAddress(address))
 }

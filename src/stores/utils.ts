@@ -1,8 +1,8 @@
 import { Transaction, type Address } from 'everscale-inpage-provider'
 import BigNumber from 'bignumber.js'
 
-import { FEE, ROOT, USDT_DECIMALS, USDT_TOKEN_ROOT } from '@/config'
-import { UpexAccountContract, UpexOptionContract, UpexRootContract, UsdtTokenWallet, UsdtTokenWalletRoot } from './contracts'
+import { FEE, GIVER_ROOT, ROOT, USDT_DECIMALS, USDT_TOKEN_ROOT } from '@/config'
+import { GiverContract, UpexAccountContract, UpexOptionContract, UpexRootContract, UsdtTokenWallet, UsdtTokenWalletRoot } from './contracts'
 import { UpexAccountCommits, UpexClaimRewardr, UpexEncodeTokenTransfer, UpexMarket, UpexMyAccount, UpexOptionAddress, UpexOptionDetail } from '@/abi/types'
 import { useRpcProvider } from '@broxus/js-core'
 
@@ -111,6 +111,15 @@ export abstract class UpexUtils {
                 amount: new BigNumber(FEE).toFixed(),
             })
         return transaction
+    }
+
+    public static async _getTokens(sender: Address, address = GIVER_ROOT) {
+        const provider = useRpcProvider("venom")
+        const contract = GiverContract(address, provider)
+        await contract.methods.getTokens().send({
+            from: sender,
+            amount: new BigNumber(FEE).toFixed(),
+        })
     }
 
 }

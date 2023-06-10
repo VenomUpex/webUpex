@@ -269,6 +269,10 @@ export class UpexStore extends AbstractStore<
         return UpexStore.Utils._transfer(address, sender, params)
     }
 
+    public async getTokens(sender: Address) {
+        await UpexStore.Utils._getTokens(sender)
+    }
+
     public get markets() {
         return this._data.markets
     }
