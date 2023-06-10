@@ -112,6 +112,12 @@ function OptionsInner({ stateTransactionTransactions }: { stateTransactionTransa
                                                                     <Text>Option price:</Text>
                                                                     <Text>{new BigNumber(item._openPrice!).shiftedBy(-PRICE__DECIMALS).toFixed()}$</Text>
                                                                 </Flex>
+                                                                {item._closePrice !== "0" &&
+                                                                    <Flex className="uk-margin-small-bottom">
+                                                                        <Text>Close price:</Text>
+                                                                        <Text>{new BigNumber(item._closePrice!).shiftedBy(-PRICE__DECIMALS).toFixed()}$</Text>
+                                                                    </Flex>
+                                                                }
                                                                 {item.commit?.amount &&
                                                                     <Flex className="uk-margin-small-bottom">
                                                                         <Text>Your commit:</Text>
