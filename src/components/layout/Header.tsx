@@ -6,7 +6,7 @@ import { useIntl } from 'react-intl'
 import {
     Button, Flex, Navbar, Text,
 } from '@broxus/react-uikit'
-import { ConnectButton, TvmConnector, useTvmWalletContext } from '@broxus/react-modules'
+import { ConnectButton, useTvmWalletContext } from '@broxus/react-modules'
 import { Icon } from '@broxus/react-components'
 
 
@@ -14,10 +14,12 @@ import { appRoutes } from '@/routes'
 
 import './Header.scss'
 import { useStore } from '@/hooks/useStore'
+import { TvmConnector } from '@/utils/TvmConnector'
 
 export function HeaderInner(): JSX.Element {
     const wallet = useTvmWalletContext()
     const intl = useIntl()
+    console.log(wallet.network?.explorer.title)
 
     return (
         <header className="header">
