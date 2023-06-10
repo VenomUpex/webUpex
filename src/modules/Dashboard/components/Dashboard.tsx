@@ -23,17 +23,19 @@ function DashboardInner(): JSX.Element {
 
     return (
         <div className='dashboard'>
-            <Button type='tertiary'
-                onClick={() => Upex.getTokens(wallet.account?.address!)}
-                style={{
-                    position: "fixed",
-                    left: "18px",
-                    bottom: "100px",
-                    zIndex: "99",
-                    padding: " 0 20px",
-                }}>
-                Get tokens
-            </Button>
+            {wallet.isConnected &&
+                <Button type='tertiary'
+                    onClick={() => Upex.getTokens(wallet.account?.address!)}
+                    style={{
+                        position: "fixed",
+                        left: "18px",
+                        bottom: "100px",
+                        zIndex: "99",
+                        padding: " 0 20px",
+                    }}>
+                    Get tokens
+                </Button>
+            }
             <Grid gap='medium' match childWidth={1}>
                 <Grid gap="xsmall" childWidth={2} >
                     <Width size='3-5' >
